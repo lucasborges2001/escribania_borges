@@ -1,0 +1,917 @@
+:root {
+    --fuenteHeading: "Trirong", serif;
+    --fuenteParrafos: "Poppins", sans-serif;
+
+    --primario: #c09c6b;
+    --secundario: #6f7655;
+    --grisOscuro: #4A4A4A;
+    --grisMedio: #B7B6B6;
+    --primarioClaro: #F6F0EA;
+    --blanco: #FFFFFF;
+    --negro: #000000;
+
+    --lineaEspesor: 0.25rem; /*Define un grosor de linea*/
+}
+
+/**Este codigo tiene que ir en todos los proyectos**/
+html {
+    box-sizing: border-box; /*mantiene el tamaño original de caja, para que no se afecte el tamaño de los elementos*/
+    font-size: 62.5%; /* 1rem = 10px */
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+} /*A todos los elementos del html se les va a aplicar la caracteristica de box-sizing: border-box;*/
+
+body {
+    font-family: var(--fuenteParrafos);
+    font-size: 1.6rem; /* 1rem = 10px */
+    line-height: 1.8; /*interlineado*/
+}
+
+/** Globales **/
+.contenedor {
+    width: min(70%, 120rem);
+    margin: 0 auto;
+}
+
+.contenedor_hero {
+    width: min(70%, 90rem);
+    margin: 0 auto;
+}
+
+a { text-decoration: none; }
+
+h1, h2, h3, h4 { font-family: var(--fuenteHeading); }
+
+h1 { 
+    font-size: 4rem; }
+
+h2 { 
+    font-size: 3rem; 
+    color: var(--secundario);
+}
+
+h3 { 
+    font-size: 2.4rem;
+    color: var(--secundario); 
+}
+
+h4 { 
+    font-size: 2.2rem; 
+    color: var(--secundario);
+}
+
+p {
+    font-family: var(--fuenteParrafos);
+    color: var(--grisOscuro);
+    font-size: 1.5rem;
+}
+
+img { max-width: 100%; }
+
+.no-decoration {
+    text-decoration: none;
+    color: inherit;
+}
+
+/****** Utilidades ******/
+.no-margin { margin: 0; } /* elimina los margenes que aplica el navegador automaticamente*/
+.no-padding { padding: 0; } /* elimina los padding que aplica el navegador automaticamente*/
+
+.centrar-texto { text-align: center; }
+
+.icono {
+    padding-bottom: .45rem;
+    display: inline-block; /*Asegura que no haya espacio extra alrededor del div*/
+    line-height: 0; /*Elimina cualquier posible espacio en blanco adicional*/
+}
+
+.mayuscula {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/** Borde linea inferior parrafos **/
+.borde_inferior { 
+    position: relative; 
+    padding-bottom: 3rem;
+    margin-bottom: 4rem;
+}
+.borde_inferior::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 0.23rem;
+    background-color: var(--secundario);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/** Borde linea inferior titulos **/
+.borde_inferior-titulos {  
+    position: relative;
+    padding-bottom: 1rem;
+}
+.borde_inferior-titulos::after {
+    position: absolute;
+    width: 15%;
+    height: var(--lineaEspesor);
+    background-color: var(--secundario);
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+/** Borde inferior blanco **/
+.borde_blanco { 
+    position: relative; 
+    padding-bottom: 1rem;
+    margin-bottom: 2.8rem;
+}
+
+.borde_blanco::after {
+    content: '';
+    display: block;
+    width: 20%;
+    height: var(--lineaEspesor);
+    background-color: var(--blanco);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/** Borde lateral derecha **/
+.linea_lateral {
+    position: relative;
+    padding-right: 3.9rem;
+    display: inline-block;
+}
+
+.linea_lateral::before {
+    content: "";
+    position: absolute;
+    right: 0; /*Ubica la línea a la derecha*/
+    top: 50%; /*Posiciona la línea en el medio vertical*/
+    height: 22rem;
+    transform: translateY(-50%); /* Centra la línea verticalmente */
+    width: var(--lineaEspesor);
+    background-color: var(--secundario);
+}
+
+/** Borde lateral derecha - Corta **/
+.linea_lateral-2 {
+    position: relative;
+    padding-right: 3.9rem;
+    display: inline-block;
+}
+
+.linea_lateral-2::before {
+    content: "";
+    position: absolute;
+    right: 0; /*Ubica la línea a la derecha*/
+    top: 50%; /*Posiciona la línea en el medio vertical*/
+    height: 28rem;
+    transform: translateY(-50%); /* Centra la línea verticalmente */
+    width: var(--lineaEspesor);
+    background-color: var(--secundario);
+}
+
+.linea_inferior {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.linea_inferior::after {
+    content: "";
+    position: absolute;
+    left: 0; 
+    bottom: -1rem; 
+    width: 8rem; 
+    height: var(--lineaEspesor);
+    background-color: var(--secundario); 
+}
+
+.margin {
+    margin-bottom: 11rem;
+}
+
+
+/****** Header Generales ******/
+.header_inicio {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 68rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header_nosotros,
+.header_servicios,
+.header_contacto {
+    background-size: cover; /*la imagen se adapta a los diferentes tamaños*/ /*para que abarque todo el ancho disponible*/
+    background-repeat: no-repeat;
+    background-position: center center; /*la imagen se achica hacia el centro, tanto vertical como horizontalmente*/
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header_inicio { background-image: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.75)), url(../img/inicio.jpg); }
+.header_nosotros { background-image: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.75)), url(../img/nosotros.jpg); }
+.header_servicios { background-image: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.75)), url(../img/servicios.jpg); }
+.header_contacto { background-image: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.75)), url(../img/contacto.jpg); }
+
+
+.header_texto { color: var(--blanco); }
+
+.header_texto-inicio h1,
+.header_texto-inicio p {
+    text-align: center;
+    color: var(--blanco);
+}
+
+.header_texto-inicio p { font-size: 1.75rem; }
+
+.header_logo {
+    display: block;
+    max-width: 12.5rem;
+    height: auto;
+}
+
+.header_logo2 { display: none; }
+
+.barra {
+    background-color: transparent;
+    transition: all 0.3s ease;
+    position: fixed; /* Fija la barra en la parte superior desde el inicio */
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.barra.scrolled {
+    background-color: rgba(74, 74, 74, .95);
+}
+
+.barra_contenido {
+    display: flex;
+    justify-content: space-between; /*para alinear horizontalmente*/
+    align-items: center; /*para alinear verticalmente*/
+    width: min(70%, 120rem);
+    margin: 0 auto;
+    padding: 1.4rem 0 .9rem 0;
+}
+
+.navegacion { 
+    display: flex; 
+    gap: 5rem;
+}
+
+.navegacion__enlace {
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--blanco);
+    padding-bottom: 0.2rem; /* Espacio para la línea */
+    border-bottom: .2rem solid transparent; /*Línea invisible por defecto*/
+    transition: border-color 0.3s ease; /*Transición suave*/
+}
+
+.navegacion__enlace:hover {
+    border-bottom: .2rem solid var(--blanco); /*Línea blanca visible*/
+}
+
+
+/****** Boton Hero ******/
+.boton_hero {
+    border: none;
+    border-radius: .5rem;
+    background-color: var(--primario);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 3rem;
+    transition: all 0.3s ease; /*Transición suave*/
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.boton_hero:hover {
+    cursor: pointer;
+    background-color: var(--blanco);
+    color: var(--primario);
+}
+
+/****** Botones Generales ******/
+.boton_general {
+    border: none;
+    border-radius: .5rem;
+    background-color: var(--primario);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: .15rem solid var(--primario);
+}
+
+.boton_general:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--primario);
+    border: .15rem solid var(--primario);
+}
+
+.boton {
+    margin-top: 2.5rem;
+}
+
+/*------------------ Index ------------------**/
+/*------------------ Datos Personales ------------------*/
+.datos {
+   background-color: var(--grisOscuro); 
+   align-self: start; /*Hace que el div y la grilla se ajuste al contenido*/
+}
+
+.datos_recuadro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: var(--blanco);
+    padding: 2rem;
+}
+
+.datos_recuadro p,
+.datos_recuadro h4 {
+    color: var(--blanco);
+}
+
+.datos_recuadro h4 {
+    font-size: 2.1rem;
+}
+
+.informacion_personal {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 3rem;
+}
+/*------------------ Fin Datos Personales ------------------*/
+
+/*------------------ Servicios Notariales ------------------*/
+.servicios { margin-bottom: 4rem; } /*Margen del texto que esta debajo del titulo de "Servicios Notariales"*/
+
+.servicios_foto {
+    background-image: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.1)), url(../img/servicios_generales.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed; /*Imagen de fondo fija mientras el contenido se desplaza*/
+}
+
+.servicios_generales {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Espacia los elementos uniformemente */
+    gap: 6rem;
+    padding: 6rem 0 6rem 0;
+}
+
+.servicios_items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /*Alinea verticalmente*/
+    align-items: center; /*Alinea horizontalmente*/
+    background-color: var(--grisOscuro);
+    border-radius: 1rem;
+    flex: 1 1 calc(25% - 4rem); /* 25% del contenedor menos el espacio de gap */
+    padding: 2rem;
+    aspect-ratio: 1 / 1; /* Mantiene la relación de aspecto cuadrada */
+    max-width: 20rem;
+    height: auto;
+    width: 100%; /* Asegura que ocupen todo el ancho disponible dentro de los límites */
+}
+
+.servicios_items p {
+    color: var(--blanco);
+}
+
+.servicios_numeros {
+    font-family: var(--fuenteHeading);
+    font-size: 7rem;
+    font-weight: 600;
+    line-height: 1; /*Asegura que la altura de la línea sea igual al tamaño de la fuente*/
+    margin-bottom: .5rem;
+}
+/*------------------ Fin Servicios Notariales ------------------*/
+
+/*------------------ Como Trabajamos ------------------*/
+.comoTrabajamos_fondo {
+    background-color: var(--primarioClaro);
+    padding: 8rem 0;
+}
+
+.comoTrabajamos {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 3rem;
+    align-items: center;
+}
+
+/** Pasos a seguir **/
+.pasos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--primarioClaro);
+    padding: 5rem 0;
+}
+
+.pasos-nosotros {
+    background-color: var(--primarioClaro);
+    padding: 5rem 0;
+}
+
+.pasos_alineacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos hijos horizontalmente */
+}
+
+.iconos_pasos {
+    display: flex; 
+    justify-content: center; /* Centra los íconos horizontalmente */
+    column-gap: 8rem; 
+    margin-bottom: 2rem;
+}
+
+.iconos_alineacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 18rem;
+}
+
+.iconos_alineacion p { font-weight: 500; }
+
+.boton_pasos {
+    display: flex;
+    justify-content: center;
+    width: 100%; /*Asegura que el botón esté centrado dentro de su contenedor*/
+}
+/*------------------ Fin Como Trabajamos ------------------*/
+
+/*------------------ Preguntas Frecuentes ------------------*/
+.preguntas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Mayor separación entre cada pregunta */
+}
+
+.pregunta_respuesta {
+    border-radius: .5rem;
+    overflow: hidden;
+    border: .15rem solid var(--grisOscuro);
+    background-color: var(--grisOscuro)
+}
+
+.pregunta-2 {
+    color: var(--blanco);
+    padding: 1.5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+}
+
+.pregunta-2.activa .flecha {
+    transform: rotate(180deg); /* Flecha rotando a la derecha */
+}
+
+.flecha {
+    position: absolute;
+    right: 2rem;
+    width: 0;
+    height: 0;
+    border-left: .6rem solid transparent;
+    border-right: .6rem solid transparent;
+    border-top: .6rem solid white;
+    transition: transform 0.3s ease;
+}
+
+.respuesta {
+    max-height: 0;
+    overflow: hidden;
+    background-color: var(--blanco);
+    transition: max-height 0.5s ease;
+}
+
+.respuesta-2 {
+    padding: 2rem;
+}
+
+.respuesta p { color: var(--grisOscuro); }
+/*------------------ Fin Preguntas Frecuentes ------------------*/
+/*------------------ Fin Index ------------------*/
+
+/*------------------ Nosotros ------------------*/
+.datos_recuadro2 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 2rem;
+    column-gap: 1rem;
+}
+
+.datos_recuadro2 p {
+    color: var(--blanco);
+}
+
+.virtudes_generales {
+    display: flex;
+    flex-wrap: wrap; /*Permite que los ítems se envuelvan en una nueva fila*/
+    max-width: 60rem; /*Ancho máximo del contenedor*/
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.virtudes {
+    width: 48%; /*Ajusta el ancho para dos columnas*/
+    margin-bottom: 2rem; /*Espacio entre filas*/
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+}
+
+.virtudes p {
+    font-size: 1.88rem;
+}
+/*------------------ Fin Nosotros ------------------*/
+
+/*------------------ Contacto ------------------*/
+.contacto_botones {
+    display: flex;
+    justify-content: center;
+    column-gap: 3rem;
+    margin-top: 5rem;
+}
+
+.contacto_informacion { margin: 10rem 0 5rem 0; }
+/*------------------ Fin Contacto ------------------*/
+
+/*------------------ Footer ------------------*/
+footer {
+    background-color: var(--grisOscuro);
+    padding: 3.8rem 0 3rem 0;
+}
+
+.contactanos_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contacto h4,
+.contacto p,
+.seguinos h4 {
+    color: var(--blanco);
+}
+
+.contacto h4,
+.seguinos h4 {
+    margin-bottom: .5rem;
+}
+
+.derechos p {
+    color: var(--grisMedio);
+    margin-top: 3.5rem;
+    font-size: 1.35rem;
+}
+
+.contacto p { margin-bottom: .5rem; }
+
+.footer_logo { 
+    max-width: 17rem;
+    height: auto;
+    margin-top: 1.3rem;
+}
+
+.iconos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/*------------------ Fin Footer ------------------*/
+
+/*------------------ Media Queries ------------------*/
+
+/******  Generales ******/
+@media (max-width: 480px) {
+
+    .contenedor { width: 100%; }
+
+    .margin { margin-bottom: 3rem; }
+
+    /******  Lineas ******/
+    .linea_lateral::before, 
+    .linea_lateral-2::before {
+        position: absolute;
+        top: auto; 
+        bottom: 0;  
+        left: 50%; 
+        transform: translateX(-50%);  
+        width: 30%;  
+        height: var(--lineaEspesor);  
+        background-color: var(--secundario); 
+        box-sizing: border-box;  
+    }
+
+    .linea_lateral, 
+    .linea_lateral-2 {
+        padding-right: 0;  
+        padding-bottom: 1.2rem; 
+    }
+
+    .borde_inferior-titulos::after,
+    .borde_inferior::after {
+        width: 30%;  
+        height: var(--lineaEspesor);  
+        background-color: var(--secundario);
+        box-sizing: border-box; 
+    }
+
+    .borde_blanco::after {
+        width: 40%;  
+        height: var(--lineaEspesor);  
+        background-color: var(--blanco); 
+        box-sizing: border-box; 
+    }
+}
+
+/*------------------ Barra Navegacion ------------------*/
+@media (max-width: 480px) {
+   
+    /* Contenedor principal de la barra de navegación */
+    .barra_contenido {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 1.5rem;
+        position: relative;
+        background-color: rgba(74, 74, 74, .95);
+    }
+
+    .header_logo { display: none; }
+
+    .header_logo2 {
+        display: block;
+        width: 15rem; 
+        height: auto;
+    }
+
+    /* Icono alineado a la derecha */
+    .menuIcon {
+        order: 2;
+        cursor: pointer;
+        font-size: 2rem;
+        color: var(--blanco);
+        display: block;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    /* Barra de navegación oculta inicialmente */
+    .navegacion {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(74, 74, 74, .95);
+        flex-direction: column;
+        row-gap: 2rem;
+        align-items: center;
+        visibility: hidden; /* Oculto inicialmente */
+        max-height: 0; /* Altura inicial cero */
+        transition: max-height 0.5s ease, visibility 0.5s ease; /* Transición más suave y profesional */
+        overflow: hidden;
+        width: 100%; /* Ocupa todo el ancho del contenedor */
+    }
+
+    /* Barra de navegación visible cuando se abre */
+    .navegacion.open {
+        align-items: center;
+        padding: 2rem 0;
+        visibility: visible;
+        max-height: 20rem; /*Ajusta según la cantidad de enlaces*/
+    }
+
+
+    /* Estilo de los enlaces de navegación */
+    .navegacion__enlace {
+        width: 100%;
+        text-align: center;
+        transition: color 0.3s ease; /* Transición */
+    }
+
+    /* Fondo en la transición del menú */
+    .navegacion.open {
+        background-color: rgba(74, 74, 74, .95);
+        transition: background-color 0.5s ease;
+    }
+
+    /* Efecto cuando se despliega */
+    .navegacion.open a {
+        opacity: 0;
+        animation: fadeIn 0.5s forwards;
+    }
+
+    /* Animación para un efecto de fade in */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-2rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+@media (min-width: 481px) {
+    .menuIcon {
+        display: none; /* Oculta el ícono del menú en dispositivos más grandes */
+    }
+}
+/*------------------ Fin Barra Navegacion ------------------*/
+
+/*------------------ Index ------------------*/
+@media (max-width: 480px) {
+
+    /****** Header Generales ******/
+    .contenedor_hero {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .header_texto-inicio h1 { font-size: 3.7rem; }
+    .header_texto-inicio p { font-size: 1.6rem; }
+
+    .header_inicio { height: 55rem; }
+
+    .header_inicio .header_texto-inicio { margin-top: 7rem; }
+    .header_contacto .header_texto-inicio { margin-top: 6rem; }
+    .header_nosotros .header_texto-inicio { margin-top: 6rem; }
+
+
+    /****** Imagenes banner ******/
+    .header_inicio { background-image: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.75)), url(../img/inicio_responsive.jpg); }
+    .header_nosotros { background-image: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.75)), url(../img/nosotros_responsive.jpg); }
+    .header_servicios { background-image: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.75)), url(../img/servicios.jpg); }
+    .header_contacto { background-image: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.75)), url(../img/contacto_resposive.jpg); }
+
+    .header_inicio { background-position: center -.1%; }
+    .header_nosotros { background-position: center 90%; }
+    .header_contacto { background-position: center 100%; }
+
+    /****** Informacion Personal ******/
+    .informacion_personal {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 4rem;
+        padding: 2rem 2rem 0 2rem;
+    }
+
+    /****** Como trabajamos ******/
+    .comoTrabajamos { 
+        grid-template-columns: 1fr;
+        row-gap: 3rem;
+        padding: 0 4rem;
+    }
+
+    .comoTrabajamos_fondo { 
+        padding: 5rem 0; 
+    }
+
+    /****** Servicios Notariales ******/
+    .servicios_foto {
+        background-image: linear-gradient(rgba(153, 153, 153, 0.25), rgba(153, 153, 153, 0.1)), url(../img/servicios\ generales_responsive.jpg);
+        background-attachment: local; /* Desactiva la fijación del fondo en móviles */
+        background-position: center center;
+        background-size: cover; /* Ajusta el fondo para que se cubra correctamente */
+    }
+
+    .servicios { padding: 0 2rem; }
+
+    .servicios_generales {
+        gap: 2rem;
+        padding: 3rem 2rem;
+    }
+
+    .servicios_numeros { font-size: 6rem; }
+
+    /****** Pasos a seguir ******/
+    .iconos_pasos {
+        flex-direction: column;
+        row-gap: 2rem;
+        column-gap: 0;
+    }
+
+    .iconos_alineacion {
+        width: 18rem;
+    }
+
+    .boton_pasos {
+        margin-top: 2rem;
+    }
+}
+/*------------------ Fin Index ------------------*/
+
+/*------------------ Nosotros ------------------*/
+@media (max-width: 480px) {
+    /****** Virtudes Generales ******/
+    .virtudes_generales {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        padding: 2rem 8rem;
+    }
+
+    .virtudes_generales > * {
+        width: 100%;
+    }
+
+    .virtudes p { font-size: 1.6rem; }
+
+    .h4_Responsive { font-size: 2.095rem; }
+}
+/*------------------ Fin Nosotros ------------------*/
+
+/*------------------ Contacto ------------------*/
+@media (max-width: 860px) {
+    .contacto_botones {
+        display: flex;
+        flex-wrap: wrap; 
+        align-items: center; 
+        row-gap: 3rem;
+        column-gap: 1.7rem;
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        padding: 0 2rem;
+    }
+    
+    .contacto_botones button {
+        flex-basis: calc(50% - 1.5rem); /* Dos botones en la misma línea, cada uno ocupando el 50% del espacio menos el gap */
+    }
+    
+    .contacto_botones button:nth-child(3) {
+        flex-basis: 100%; /* El tercer botón ocupa toda la línea */
+    }
+
+    .contacto_informacion { 
+        margin: 0; 
+        padding: 0 2rem;
+    }
+
+    .contacto_informacion2 { 
+        margin-bottom: 4rem;
+        padding: 0 1.19rem; 
+    }
+}
+/*------------------ Fin Contacto ------------------*/
+
+/*------------------ Preguntas Frecuentes ------------------*/
+/*------------------ Fin Preguntas Frecuentes ------------------*/
+
+/*------------------ Footer ------------------*/
+@media (max-width: 480px) {
+    .contactanos_info { 
+        flex-direction: column;
+        row-gap: 2.5rem;
+        justify-content: justify;
+        align-items: center;
+        padding: 0 9.5rem;
+    }
+
+    .derechos { padding: 0 2rem; }
+}
+/*------------------ Fin Footer ------------------*/
+/*------------------ Fin Media Queries ------------------*/
+
+
+/*AGREGO*/
